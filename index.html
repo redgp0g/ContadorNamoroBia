@@ -8,17 +8,36 @@
   <style>
     @keyframes subir {
       0% { transform: translateY(0) scale(1); opacity: 1; }
-      100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+      100% { transform: translateY(-100vh) scale(1.2); opacity: 0; }
     }
     
-    .coracao {
+    .mensagem {
       position: fixed;
       bottom: 0;
-      font-size: 24px;
-      animation: subir 3s linear;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 8px 12px;
+      border-radius: 8px;
+      animation: subir 4s linear;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
     }
   </style>
   <script>
+    const frases = [
+      "Você é o meu para sempre. ❤️",
+      "Cada dia com você é um presente. 🎁",
+      "Nosso amor só cresce! 💖",
+      "Te amo mais do que as estrelas no céu. ✨",
+      "Ao seu lado, tudo faz sentido. 💑",
+      "Você ilumina meus dias! ☀️",
+      "Minha felicidade tem nome: você! 💕",
+      "Te amo hoje, amanhã e sempre! 💘",
+      "Nosso amor é a melhor história. 📖",
+      "Juntos somos invencíveis! 💪💖"
+    ];
+
     function atualizarContador() {
       const inicioNamoro = new Date("2024-02-03T15:37:00");
       const agora = new Date();
@@ -35,20 +54,20 @@
       document.getElementById("segundos").innerText = segundos;
     }
 
-    function criarCoração() {
-      const coracao = document.createElement("div");
-      coracao.innerText = "❤️";
-      coracao.classList.add("coracao");
-      coracao.style.left = Math.random() * 100 + "vw";
-      coracao.style.animationDuration = (Math.random() * 2 + 2) + "s";
-      document.body.appendChild(coracao);
+    function criarMensagem() {
+      const mensagem = document.createElement("div");
+      mensagem.innerText = frases[Math.floor(Math.random() * frases.length)];
+      mensagem.classList.add("mensagem");
+      mensagem.style.left = Math.random() * 80 + "vw";
+      mensagem.style.animationDuration = (Math.random() * 2 + 3) + "s";
+      document.body.appendChild(mensagem);
 
-      setTimeout(() => coracao.remove(), 3000);
+      setTimeout(() => mensagem.remove(), 4000);
     }
 
-    function chuvaDeCoracoes() {
-      for (let i = 0; i < 20; i++) {
-        setTimeout(criarCoração, i * 100);
+    function chuvaDeMensagens() {
+      for (let i = 0; i < 10; i++) {
+        setTimeout(criarMensagem, i * 200);
       }
     }
 
@@ -77,9 +96,9 @@
     </div>
   </div>
 
-  <button onclick="chuvaDeCoracoes()" 
+  <button onclick="chuvaDeMensagens()" 
     class="mt-6 px-6 py-3 bg-white text-pink-500 font-bold rounded-lg shadow-lg hover:bg-gray-200 transition">
-    Enviar amor ❤️
+    Enviar amor 💕
   </button>
 </body>
 </html>
